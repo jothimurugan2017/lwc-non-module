@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>GeeksForGeeks</h1>
+    <button onclick="Func()">Show Details</button>
+    <script>
+      function Func() {
+        fetch('http://127.0.0.1:9665/fetchAPI?endpoint=usdjpy_2012_2013.json')
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => console.log(data));
+      }
+    </script>
+  </body>
+</html>

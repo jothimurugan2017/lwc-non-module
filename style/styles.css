@@ -1,0 +1,11 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+div{
+
+  position: absolute;
+  width: 50%;
+  height: 300px;
+}

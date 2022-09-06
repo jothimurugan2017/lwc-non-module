@@ -1,0 +1,71 @@
+shared
+https://docs.google.com/spreadsheets/d/1wmC0InmAiwyLuWXezo7sGqdsrInDfCL-Vsww-RGgCbM/edit?usp=sharing
+
+https://docs.google.com/spreadsheets/d/1uzSugqjUMhhKNw0K0jYp13MMeu75UITrcy5pfR4jypM/edit?usp=sharing
+
+jsonformat
+https://spreadsheets.google.com/feeds/cells/YOURGOOGLESHEETCODE/SHEETPAGENUMBER/public/full?alt=json
+
+publishweb
+https://docs.google.com/spreadsheets/d/e/2PACX-1vTh7ztoh_mx3L_r14VueSQpESbEiY_boFji2fpSTa7C2bkpWJitOv6XxnVnued9AtLloaPP8GGXLbi7/pubhtml
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vSMiueN6Jy5D9HHw5pVPS5m2sKHiX9pcp9aLkKPyqMaYortMpxo3wrMGTEPe_3BKB-juuFhqmfBTDgu/pubhtml
+ActualJson
+
+https://spreadsheets.google.com/feeds/cells/1wmC0InmAiwyLuWXezo7sGqdsrInDfCL-Vsww-RGgCbM/1/public/full?alt=json
+
+https://opensheet.elk.sh/1wmC0InmAiwyLuWXezo7sGqdsrInDfCL-Vsww-RGgCbM/USDJPY
+
+https://opensheet.elk.sh/1uzSugqjUMhhKNw0K0jYp13MMeu75UITrcy5pfR4jypM/usdjpy_2012_13
+
+Binance
+https://api.binance.com/api/v3/klines?symbol=ETHUSDT&interval=1d&limit=1000
+
+
+
+fetch(`http://127.0.0.1:9665/fetchAPI?endpoint=https://opensheet.elk.sh/1uzSugqjUMhhKNw0K0jYp13MMeu75UITrcy5pfR4jypM/usdjpy_2012_13`)
+  .then(res => res.json())
+  .then(data => {
+    const cdata = data.map(d => {
+      return {d[0],d[1],d[2],d[3],d[4]}
+    });
+
+
+import csv
+import json
+
+
+# Function to convert a CSV to JSON
+# Takes the file paths as arguments
+def make_json(csvFilePath, jsonFilePath):
+
+	# create a dictionary
+	data = {}
+
+	# Open a csv reader called DictReader
+	with open(csvFilePath, encoding='utf-8') as csvf:
+		csvReader = csv.DictReader(csvf)
+
+		# Convert each row into a dictionary
+		# and add it to data
+		for rows in csvReader:
+
+			# Assuming a column named 'No' to
+			# be the primary key
+			key = rows['No']
+			data[key] = rows
+
+	# Open a json writer, and use the json.dumps()
+	# function to dump data
+	with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
+		jsonf.write(json.dumps(data, indent=4))
+
+# Driver Code
+
+# Decide the two file paths according to your
+# computer system
+csvFilePath = r'Active-working_USDJPY_M30_07110_20121231 - USDJPY_M30_201207110230_201212311700.csv'
+jsonFilePath = r'usdjpy.json'
+
+# Call the make_json function
+make_json(csvFilePath, jsonFilePath)
